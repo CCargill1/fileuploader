@@ -35,8 +35,8 @@ const Uploader = () => {
         setFile(file);
     };
 
-    function sendEmail(userEmail, filename) {
-        const data = { fileName: filename,  emailAddress: userEmail};
+    function sendEmail(userEmail, filename, fileLocation) {
+        const data = { fileName: filename,  emailAddress: userEmail, location: fileLocation};
 
         let url = process.env.REACT_APP_HYYPHENAPIURL
 
@@ -92,7 +92,7 @@ const Uploader = () => {
             } else {
                 console.log(data);
                 setMessage("Uploaded Successfully")
-                sendEmail(email, fileName)
+                sendEmail(email, fileName, data.Location)
                 setFile(null)
             }
         });
