@@ -1,0 +1,29 @@
+
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.modal {
+    width: 400px;
+    height: 600px;
+    margin-top: clamp(80px, 10%, 150px);
+    background-color: #EBECEC;
+    border-radius: 5px;
+    padding: 2%;
+    text-align: center;
+}
+
+.logo {
+    padding-top: 20px;
+    max-width: 200px;
+    height: auto;
+}
+
+.bannerContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    
+}

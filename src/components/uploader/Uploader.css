@@ -1,0 +1,13 @@
+.button {
+    margin-top: 10px;
+}
+
+
+.itemContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 70%;
+}
+
+
