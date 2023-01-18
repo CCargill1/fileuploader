@@ -38,7 +38,7 @@ const Uploader = () => {
     function sendEmail(userEmail, filename) {
         const data = { fileName: filename,  emailAddress: userEmail};
 
-        let url = process.env.HYYPHENAPIURL
+        let url = process.env.REACT_APP_HYYPHENAPIURL
 
         fetch(url, {
             method: 'POST', 
@@ -80,8 +80,8 @@ const Uploader = () => {
         };
 
         s3.config.update({
-            accessKeyId: process.env.AWSACCESSKEY,
-            secretAccessKey: process.env.AWSSECRETKEY
+            accessKeyId: process.env.REACT_APP_AWSACCESSKEY,
+            secretAccessKey: process.env.REACT_APP_AWSSECRETKEY
         });
 
 
