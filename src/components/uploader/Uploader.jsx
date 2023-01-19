@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
 import { FileUploader } from "react-drag-drop-files";
-import emailjs from '@emailjs/browser';
 
 
 import Button from '@mui/material/Button/Button'
