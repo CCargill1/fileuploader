@@ -64,7 +64,6 @@ const Uploader = () => {
           };
 
           let url = process.env.REACT_APP_EMAILJSAPIURL
-          console.log(url)
           fetch(url, {
             method: 'POST', 
             headers: {
@@ -117,7 +116,6 @@ const Uploader = () => {
                 console.log(err);
                 setMessage("Upload Failed, Please try Again")
             } else {
-                console.log(data);
                 setMessage("Uploaded Successfully")
                 //sendEmail(email, fileName, data.Location)
                 sendEmailViaEmailJS(email, fileName, data.Location)
