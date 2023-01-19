@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 import { FileUploader } from "react-drag-drop-files";
+import emailjs from '@emailjs/browser';
+
 
 import Button from '@mui/material/Button/Button'
 import './Uploader.css'
@@ -50,6 +52,32 @@ const Uploader = () => {
         setEmail("")
     }
 
+    function sendEmailViaEmailJS(userEmail, filename, fileLocation) {
+        var data = {
+            "service_id": process.env.REACT_APP_EMAILSERVICEID,
+            "template_id": "teldiotemplate1",
+            "user_id": process.env.REACT_APP_EMAILUSERID,
+            "template_params": {
+              "customer": userEmail,
+              "filename": filename,
+              "fileLocation": fileLocation
+            }
+          };
+
+          let url = process.env.REACT_APP_EMAILJSAPIURL
+
+          fetch(url, {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+    }
+
+    
+
+
     function openFileExplorer() {
         const input = document.createElement('input');
         input.type = 'file';
@@ -92,7 +120,8 @@ const Uploader = () => {
             } else {
                 console.log(data);
                 setMessage("Uploaded Successfully")
-                sendEmail(email, fileName, data.Location)
+                //sendEmail(email, fileName, data.Location)
+                sendEmailViaEmailJS(email, fileName, data.Location)
                 setFile(null)
             }
         });
