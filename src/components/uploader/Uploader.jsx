@@ -64,7 +64,7 @@ const Uploader = () => {
           };
 
           let url = process.env.REACT_APP_EMAILJSAPIURL
-
+          console.log(url)
           fetch(url, {
             method: 'POST', 
             headers: {
