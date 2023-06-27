@@ -170,7 +170,9 @@ const Uploader = () => {
         ) : null}
         {file ? <h4 className="emailMessage">{emailMessage}</h4> : null}
         {uploading ? (
-          <Box sx={{ display: "flex", width: "100%" }}>
+          <Box
+            sx={{ display: "flex", width: "100%", justifyContent: "center" }}
+          >
             <CircularProgress />
           </Box>
         ) : null}
