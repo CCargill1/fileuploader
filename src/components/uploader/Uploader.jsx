@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import Button from "@mui/material/Button/Button";
 import "./Uploader.css";
@@ -12,6 +13,7 @@ const Uploader = () => {
   const [message, setMessage] = useState();
   const [fileDesc, setFileDesc] = useState("");
   const [emailMessage, setEmailMessage] = useState();
+  const [uploading, setUploading] = useState(false);
 
   const AWS = require("aws-sdk");
 
@@ -90,6 +92,7 @@ const Uploader = () => {
   }
 
   function uploadFileToS3() {
+    setUploading(true);
     if (email.length > 0) {
       const s3 = new AWS.S3();
 
@@ -110,6 +113,7 @@ const Uploader = () => {
       });
 
       s3.upload(params, function (err, data) {
+        setUploading(false);
         if (err) {
           console.log(err);
           setMessage("Upload Failed, Please try Again");
@@ -146,8 +150,8 @@ const Uploader = () => {
             Add File
           </Button>
         )}
-        {file ? <h1>{file.name}</h1> : null}
-        {file ? (
+        {file ? <h2 className="textField">{file.name}</h2> : null}
+        {file && !uploading ? (
           <TextField
             id="outlined-basic"
             label="Email"
@@ -155,7 +159,7 @@ const Uploader = () => {
             onChange={(e) => setEmailWithChecks(e.target.value)}
           />
         ) : null}
-        {file ? (
+        {file && !uploading ? (
           <TextField
             id="outlined-basic"
             label="Description"
@@ -164,7 +168,8 @@ const Uploader = () => {
           />
         ) : null}
         {file ? <h4 className="emailMessage">{emailMessage}</h4> : null}
-        {file ? (
+        {file && !uploading ? <CircularProgress /> : null}
+        {file && !uploading ? (
           <Button
             variant="contained"
             className="button"
@@ -177,7 +182,7 @@ const Uploader = () => {
         {message ? <h1>{message}</h1> : null}
       </div>
 
-      {file ? (
+      {file && !uploading ? (
         <Button
           variant="text"
           className="cancelButton"
