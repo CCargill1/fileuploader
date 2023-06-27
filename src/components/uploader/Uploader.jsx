@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 import Button from "@mui/material/Button/Button";
 import "./Uploader.css";
@@ -92,8 +93,8 @@ const Uploader = () => {
   }
 
   function uploadFileToS3() {
-    setUploading(true);
     if (email.length > 0) {
+      setUploading(true);
       const s3 = new AWS.S3();
 
       const fileName = file.name;
@@ -168,7 +169,11 @@ const Uploader = () => {
           />
         ) : null}
         {file ? <h4 className="emailMessage">{emailMessage}</h4> : null}
-        {file && !uploading ? <CircularProgress /> : null}
+        {uploading ? (
+          <Box sx={{ display: "flex" }}>
+            <CircularProgress />
+          </Box>
+        ) : null}
         {file && !uploading ? (
           <Button
             variant="contained"
