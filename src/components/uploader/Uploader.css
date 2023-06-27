@@ -1,13 +1,16 @@
 .button {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
-
 .itemContainer {
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    height: 70%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 70%;
+}
+
+.textField {
+  width: 400px;
 }
 
 
