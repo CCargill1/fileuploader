@@ -1,14 +1,39 @@
+/* Define the custom font */
+@font-face {
+  font-family: 'Oxygen-Light';
+  src: url('/public/fonts/Oxygen-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Define the custom font */
+@font-face {
+  font-family: 'Oxygen-Bold';
+  src: url('/public/fonts/Oxygen-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Define the custom font */
+@font-face {
+  font-family: 'Oxygen-Regular';
+  src: url('/public/fonts/Oxygen-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Oxygen-Light', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #4D4D4D;
+  background-color: #F4F4F4;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
